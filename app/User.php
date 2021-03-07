@@ -6,15 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Bavix\Wallet\Traits\HasWallet;
-use Bavix\Wallet\Interfaces\Wallet;
 
 
-class User extends Authenticatable implements Wallet
+
+class User extends Authenticatable 
 {
     use Notifiable;
     use HasRoles;
-    use HasWallet;
 
     /**
      * The attributes that are mass assignable.

@@ -178,6 +178,10 @@ return [
         // debugbar
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        // spartie laravel permissions service provider
+        Spatie\Permission\PermissionServiceProvider::class,
+
+
 
     ],
 
@@ -230,6 +234,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
 
 
     ],

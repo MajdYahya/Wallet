@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\CreateWallet;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use App\Listeners\SettingUpDefaultRoleListener;
@@ -19,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
             SettingUpDefaultRoleListener::class,
+            CreateWallet::class,
         ],
     ];
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,11 +55,19 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'min:7', 'unique:users,phone,country_code'],
+            // 'event' => 'required|unique:events,event,NULL,id,category,'.$categoryName,
+
+            'phone' => [
+                'required', 'string', 'min:7',
+                Rule::unique('users')->where(function ($query) use ($data) {
+                    return $query->where('country_code', '=', $data['countryCode']);
+                }),
+            ],
+            // 'phone' => ['required', 'string', 'min:7', 'unique:users,phone,null,country_code,'. $data['countryCode']],
             'password' => ['required', 'string', 'min:8'],
             'countryCode' => ['required', 'string', 'min:1', 'max:3'],
             'birthday' => ['nullable', 'date'],
-            'userImage' => ['required', 'string', 'max:5000000'],
+            'userImage' => ['required', 'mimes:jpeg,png,jpg,gif,svg|max:5000000'],
 
         ]);
     }
@@ -71,6 +80,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $data['userImage']->store('profiles', 'public');
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

@@ -83,38 +83,4 @@ class Transaction extends Model
             ->first();
         return $query->where('wallet_id', $wallet->id);
     }
-
-    // public function scopeGetTotalTransactions($query)
-    // {
-
-    //     $wallet = Wallet::where('user_id', '=', Auth::user()->id)
-    //         ->first();
-    //     return $query
-    //         ->addSelect([
-    //             'wallet AS wallet_expanses_amount' => function ($query) use ($wallet) {
-    //                 $query
-    //                     // ->where('wallet_id', '=', $wallet->id)
-    //                     ->sum('amount');
-    //             },
-    //             'wallet AS wallet_expanses_amount' =>
-    //             function ($query) use ($wallet) {
-    //                 $query
-    //                     // ->where('wallet_id', '=', $wallet->id)
-    //                     ->sum('amount');
-    //             }
-    //         ])
-    //         // ->withCount([
-    //         //     'wallet AS wallet_expanses_amount' => function ($query) {
-    //         //         $query->select(DB::raw('SUM(amount) as wallet_expanses_amount'))
-    //         //             ->where('type', '=', 'expanse')
-    //         //             ->groupBy('wallet_id');
-    //         //     }, 'wallet AS wallet_income_amount' => function ($query) {
-    //         //         $query->select(DB::raw('SUM(amount) as wallet_income_amount'))
-    //         //             ->where('type', '=', 'income')
-    //         //             ->groupBy('wallet_id');
-    //         //     },
-    //         // ])
-    //         // ->where('wallet_id', $wallet->id)
-    //         ->get();
-    // }
 }

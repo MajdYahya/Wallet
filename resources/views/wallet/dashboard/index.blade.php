@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <h2>
+                My walllet transactions and summary
+            </h2>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-content">
@@ -36,21 +39,24 @@
     <div class="container">
 
         <!-- FusionCharts begin -->
-        <div class="row">
-            <div class="col-8"></div>
+        <div class="row mt-3">
+            <div class="col-8">
+                <h1>Chart using <a href="https://www.fusioncharts.com/">FusionCharts</a><span style="font-size:20px"> (Not
+                        working)</span></h1>
+            </div>
             <div class="col-4">
                 <select class="form-control" name="filteration" id="filteration">
                     <option value="daily"> daily</option>
                     <option value="monthly"> monthly</option>
-                    <option value="yearly"> monthly</option>
+                    <option value="yearly"> yearly</option>
                 </select>
             </div>
         </div>
         <div class="chart">
             <script src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
             <script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
-            <h1>Chart #6 <a href="https://www.fusioncharts.com/">FusionCharts</a></h1>
             <div id="fusioncharts"></div>
+
         </div>
         <!-- FusionCharts end -->
         <script type="application/javascript">

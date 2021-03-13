@@ -19,6 +19,7 @@ class AddSignupInfoToUsersTable extends Migration
             $table->string('country_code');
             $table->timestamp('birthday')->nullable();
             $table->string('user_image');
+            $table->boolean('is_admin')->default(0);
         });
     }
 
